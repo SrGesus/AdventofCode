@@ -11,6 +11,7 @@ fn main() {
     for line in reader {
         let line: Result<u32, _> = line.unwrap().parse();
         match line {
+            // Line will either be the number, or Err if blank
             Ok(num) => elf += num,
             Err(_) => {
                 if elf > max {

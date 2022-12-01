@@ -7,26 +7,25 @@ fn main() {
     let reader = BufReader::new(file).lines();
 
     let mut elf = 0;
+    // max is a self sorting array [u32, 3]
     let mut max = Array::new();
 
     for line in reader {
         let line: Result<u32, _> = line.unwrap().parse();
+        // Line will either be the number, or Err if blank
         match line {
             Ok(num) => elf += num,
             Err(_) => {
-                println!("{elf}");
                 max.push(elf);
                 elf = 0;
             }
         }
     }
-    // Register the last elf
-    println!("{elf}");
+    // Check the last elf (if it doesn't end in a blank line)
     max.push(elf);
 
     println!("{:?}", max.sum());
 }
-
 
 type Array = [u32; 3];
 
@@ -35,7 +34,6 @@ trait SelfSorting {
     fn push(&mut self, value: u32);
     fn sum(self) -> u32;
 }
-
 impl SelfSorting for Array {
     fn new() -> Self {
         [0, 0, 0]
