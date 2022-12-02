@@ -3,17 +3,13 @@
 For my first time in Advent of Code I decided to do it in Rust.
 
 ## Source Code: (2/25) Done  
-╔════╦════╦════╦════╦════╦════╦════╗  
-║ M&nbsp;  ║ T&nbsp;  ║ W&nbsp;  ║ T&nbsp;  ║ F&nbsp;  ║ S&nbsp;  ║ S&nbsp;  ║  
-╠════╬════╬════╬════╬════╬════╬════╣  
-║&nbsp; &nbsp; ║&nbsp; &nbsp; ║&nbsp; &nbsp; 
-║&nbsp; [1](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day01) 
-║&nbsp; [2](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day02) 
-║&nbsp; X ║&nbsp; X ║  
-║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║  
-║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║  
-║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║&nbsp; X ║  
-╚════╩════╩════╩════╩════╩════╩════╝  
+
+| M  | T  | W  | T  | F  | S  | S  |
+|----|----|----|----|----|----|----|
+|    |    |    |  [1](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day01) |  [2](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day02) |  X |  X |
+|  X |  X |  X |  X |  X |  X |  X |
+|  X |  X |  X |  X |  X |  X |  X |
+|  X |  X |  X |  X |  X |  X |  X |
 
 Each input is stored under `./resources/dayXX` and read from by the programs.
 
