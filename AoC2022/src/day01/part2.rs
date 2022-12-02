@@ -1,6 +1,9 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
+// Number of elves for the top
+// (Here we want the calories of the TOP 3 elves)
+const TOP_ELVES: usize = 3;
 
 fn main() {
     let file = File::open("./resources/day01/input.txt").unwrap();
@@ -27,7 +30,7 @@ fn main() {
     println!("{:?}", max.sum());
 }
 
-type Array = [u32; 3];
+type Array = [u32; TOP_ELVES];
 
 trait SelfSorting {
     fn new() -> Self;
@@ -36,12 +39,14 @@ trait SelfSorting {
 }
 impl SelfSorting for Array {
     fn new() -> Self {
-        [0, 0, 0]
+        [0; TOP_ELVES]
     }
 
     fn push(&mut self, value: u32) {
         let max = self;
-        for i in 0..max.len() {
+        // Insert the value if it's greater than the smallest value 
+        // while maintaning the array sorted
+        for i in 0..TOP_ELVES {
             if value > max[i] {
                 if i > 0 {
                     max[i-1] = max[i]
