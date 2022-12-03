@@ -2,7 +2,7 @@
 
 For my first time in Advent of Code I decided to do it in Rust.
 
-## Source Code: (2/25) Done  
+## Source Code: (3/25) Done  
 
 | M  | T  | W  | T  | F  | S  | S  |
 |----|----|----|----|----|----|----|
