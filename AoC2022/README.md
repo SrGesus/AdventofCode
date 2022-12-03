@@ -6,7 +6,7 @@ For my first time in Advent of Code I decided to do it in Rust.
 
 | M  | T  | W  | T  | F  | S  | S  |
 |----|----|----|----|----|----|----|
-|    |    |    |  [1](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day01) |  [2](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day02) |  X |  X |
+|    |    |    |  [1](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day01) |  [2](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day02) |  [3](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/day03) |  X |
 |  X |  X |  X |  X |  X |  X |  X |
 |  X |  X |  X |  X |  X |  X |  X |
 |  X |  X |  X |  X |  X |  X |  X |
