@@ -2,11 +2,11 @@
 
 For my first time in Advent of Code I decided to do it in Rust.
 
-## Source Code: (3/25) Done  
+## Source Code: (4/25) Done  
 
 | M  | T  | W  | T  | F  | S  | S  |
 |----|----|----|----|----|----|----|
-|    |    |    |  [1](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |  [2](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |  [3](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |  X |
+|    |    |    |  [1](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |  [2](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |  [3](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |  [4](https://github.com/SrGesus/AdventofCode/tree/main/AoC2022/src/bin) |
 |  X |  X |  X |  X |  X |  X |  X |
 |  X |  X |  X |  X |  X |  X |  X |
 |  X |  X |  X |  X |  X |  X |  X |
