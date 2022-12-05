@@ -19,8 +19,6 @@ let file = File::open("./resources/day05/input.txt")?;
             }
         } else {
             let words: Vec<&str> = line.as_str().split(" ").collect();
-            println!("{:?}", cargo);
-            println!("{:?}", words);
             if words.len() == 6 {
                 let (number, source, destination) = (
                     words[1].parse::<usize>().unwrap(),

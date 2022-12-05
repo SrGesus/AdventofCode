@@ -47,7 +47,6 @@ impl SectionID {
         // get the last number
         range[number] = string[start..].parse::<u8>().unwrap();
 
-        println!("{:?}", range);
         (SectionID::new(range[0], range[1]), SectionID::new(range[2], range[3]))
     }
 
@@ -57,7 +56,6 @@ impl SectionID {
             min(section1.end, section2.end)
         );
         let size: i8 = intersection.end as i8 - intersection.start as i8;
-        println!("{size}");
         if size < 0 {
             false
         } else {

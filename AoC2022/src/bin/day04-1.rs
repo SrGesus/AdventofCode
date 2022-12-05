@@ -48,7 +48,6 @@ impl SectionID {
         // get the last number
         range[number] = string[start..].parse::<u8>().unwrap();
 
-        println!("{:?}", range);
         (SectionID::new(range[0], range[1]), SectionID::new(range[2], range[3]))
     }
 
