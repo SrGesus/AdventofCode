@@ -36,11 +36,11 @@ fn item_to_priority(item: char) -> u64 {
     println!("{}", item as u64);
     let item = item as u64;
     // If item is from a to z
-    if 97 <= item && item <= 122 {
+    if (97..=122).contains(&item) {
         return item-96;
     }
     // If item is from A to Z
-    if 65 <= item && item <= 90 {
+    if (65..=90).contains(&item) {
         return item-38;
     }
     panic!()

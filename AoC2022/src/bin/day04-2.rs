@@ -56,11 +56,7 @@ impl SectionID {
             min(section1.end, section2.end)
         );
         let size: i8 = intersection.end as i8 - intersection.start as i8;
-        if size < 0 {
-            false
-        } else {
-            true
-        }
+        size >= 0
     }
 }
 

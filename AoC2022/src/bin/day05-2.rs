@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-use std::collections::{VecDeque};
+use std::collections::VecDeque;
 
 fn main() -> std::io::Result<()> {
 let file = File::open("./resources/day05/input.txt")?;
@@ -13,12 +13,11 @@ let file = File::open("./resources/day05/input.txt")?;
         let line = line?;
 
         if collecting_cargo {
-            match cargo.push_line(line) {
-                Result::EndOfCargo => collecting_cargo = false,
-                _ => (),
+            if let Result::EndOfCargo = cargo.push_line(line) {
+                collecting_cargo = false;
             }
         } else {
-            let words: Vec<&str> = line.as_str().split(" ").collect();
+            let words: Vec<&str> = line.as_str().split(' ').collect();
             if words.len() == 6 {
                 let (number, source, destination) = (
                     words[1].parse::<usize>().unwrap(),
@@ -31,9 +30,8 @@ let file = File::open("./resources/day05/input.txt")?;
     }
     let mut result = String::new();
     for column in cargo {
-        match column.back() {
-            Some(char) => result.push(*char),
-            None => (),
+        if let Some(ch) = column.back() {
+            result.push(*ch);
         }
     }
     println!("{}", result);
@@ -80,15 +78,13 @@ impl CargoTrait for Cargo {
     fn move_crates(&mut self, number: usize, source: usize, destination: usize) {
         let mut temp_crates: VecDeque<char> = VecDeque::new();
         for _ in 0..number {
-            match self[source].pop_back() {
-                Some(cargo) => temp_crates.push_back(cargo),
-                None => (),
+            if let Some(cargo) = self[source].pop_back() {
+                temp_crates.push_back(cargo);
             }
         }
         for _ in 0..number {
-            match temp_crates.pop_back() {
-                Some(cargo) => self[destination].push_back(cargo),
-                None => (),
+            if let Some(cargo) = temp_crates.pop_back() {
+                self[destination].push_back(cargo);
             }
         }
     }

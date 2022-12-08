@@ -18,9 +18,9 @@ let file = File::open("./resources/day07/input.txt")?;
                 cd_into(&mut sizes, &mut current_dir, &line[5..])
             }
         } else {
-            match line.split(" ").next().unwrap() {
+            match line.split(' ').next().unwrap() {
                 "dir" => (),
-                number => add_to_size(&mut sizes, &mut current_dir, number.parse::<usize>().unwrap()),
+                number => add_to_size(&mut sizes, &current_dir, number.parse::<usize>().unwrap()),
             }
         }
     }
@@ -35,7 +35,7 @@ let file = File::open("./resources/day07/input.txt")?;
     Ok(())
 }
 
-fn get_path(current_dir: &Vec<String>) -> String {
+fn get_path(current_dir: &[String]) -> String {
     let mut path = String::from("/");
     for i in current_dir.iter().skip(1) {
         path += i;
@@ -59,7 +59,7 @@ fn cd_into(sizes: &mut HashMap<String, usize>, current_dir: &mut Vec<String>, di
         current_dir.pop();
     } else {
         current_dir.push(dir.to_string());
-        if let None = sizes.get(get_path(current_dir).as_str()) {
+        if sizes.get(get_path(current_dir).as_str()).is_none() {
             sizes.insert(get_path(current_dir), 0);
         }
     }
