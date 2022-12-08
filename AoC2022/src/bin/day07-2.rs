@@ -29,10 +29,10 @@ let file = File::open("./resources/day07/input.txt")?;
     let used_space = sizes.get("/").unwrap();
     let needed_space = used_space - (FILESYSTEM_SIZE - REQUIRED_SPACE);
     let mut min = FILESYSTEM_SIZE;
-    for (dir, size) in sizes {
-        if size >= needed_space {
-            if size < min {
-                min = size;
+    for size in sizes.values() {
+        if size >= &needed_space {
+            if size < &min {
+                min = *size;
             }
         }
     }
@@ -40,7 +40,7 @@ let file = File::open("./resources/day07/input.txt")?;
     Ok(())
 }
 
-fn get_path(current_dir: &Vec<String>) -> String {
+fn get_path(current_dir: &[String]) -> String {
     let mut path = String::from("/");
     for i in current_dir.iter().skip(1) {
         path += i;
@@ -51,7 +51,7 @@ fn get_path(current_dir: &Vec<String>) -> String {
 
 fn add_to_size(sizes: &mut HashMap<String, usize>, current_dir: &Vec<String>, file_size: usize) {
     for i in 1..current_dir.len()+1  {
-        let path = get_path(&Vec::from(&current_dir[..i]));
+        let path = get_path(&current_dir[..i]);
         sizes.insert(path.to_owned(), sizes.get(&path).unwrap() + file_size);
     }
 }
