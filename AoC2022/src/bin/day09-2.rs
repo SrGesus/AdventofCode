@@ -81,7 +81,6 @@ fn move_tail(head: &Cell, tail: &mut Cell) {
         }
         return;
     }
-    println!("Did nothing");
 }
 
 enum Direction{
@@ -92,7 +91,6 @@ enum Direction{
 }
 
 fn move_head(head: &mut Cell, tails: &mut[Cell], visited: &mut HashSet<Cell>, string: String) -> u32 {
-    println!("{}", string);
     let vector = Direction::get_direction(string.get(0..1).unwrap().chars().next().unwrap()).get_vector();
     let steps = string[2..].parse::<u8>().unwrap();
     let mut sum = 0;
