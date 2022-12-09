@@ -7,19 +7,20 @@ let file = File::open("./resources/day09/input.txt")?;
     let reader = BufReader::new(file).lines();
 
     let mut visited: HashSet<Cell> = HashSet::new();
-    let mut head: Cell = (0, 0);
-    let mut tail: Cell = (0, 0);
+    let mut head: Cell = Cell(0, 0);
+    let mut tails: Vec<Cell> = vec![Cell(0, 0); 9];
     let mut sum = 0;
 
     for line in reader {
         let line = line?;
-        sum += move_head(&mut head, &mut tail, &mut visited, line);
+        sum += move_head(&mut head, &mut tails, &mut visited, line);
     }
     println!("Sum = {sum}");
     Ok(())
 }
 
-type Cell = (isize, isize);
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+struct Cell(isize, isize);
 
 fn move_tail(head: &Cell, tail: &mut Cell) {
     if tail.0 == head.0 {
@@ -90,7 +91,7 @@ enum Direction{
     Down,
 }
 
-fn move_head(head: &mut Cell, tails: &mut Vec<Cell>, visited: &mut HashSet<Cell>, string: String) -> u32 {
+fn move_head(head: &mut Cell, tails: &mut[Cell], visited: &mut HashSet<Cell>, string: String) -> u32 {
     println!("{}", string);
     let vector = Direction::get_direction(string.get(0..1).unwrap().chars().next().unwrap()).get_vector();
     let steps = string[2..].parse::<u8>().unwrap();
@@ -98,10 +99,13 @@ fn move_head(head: &mut Cell, tails: &mut Vec<Cell>, visited: &mut HashSet<Cell>
     for _ in 0..steps {
         head.0 = head.0 as isize + vector.0;
         head.1 = head.1 as isize + vector.1;
-        println!("Head: {:?} Tail: {:?}", head, tail);
-        move_tail(head, tail);
-        if !visited.contains(tail) {
-            visited.insert(*tail);
+        let mut last_tail = &head.clone();
+        for knot in tails.iter_mut() {
+            move_tail(last_tail, knot);
+            last_tail = knot
+        }
+        if !visited.contains(last_tail) {
+            visited.insert(*last_tail);
             sum += 1;
         }
     }
