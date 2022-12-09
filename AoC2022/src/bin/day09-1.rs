@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
@@ -13,13 +13,13 @@ let file = File::open("./resources/day09/input.txt")?;
 
     for line in reader {
         let line = line?;
-        move_head(&mut head, &mut tail, &mut visited, line);
+        sum += move_head(&mut head, &mut tail, &mut visited, line);
     }
     println!("Sum = {sum}");
     Ok(())
 }
 
-type Cell = (usize, usize);
+type Cell = (isize, isize);
 
 fn move_tail(head: &Cell, tail: &mut Cell) {
     if tail.0 == head.0 {
@@ -36,7 +36,7 @@ fn move_tail(head: &Cell, tail: &mut Cell) {
             tail.0 += 1;
         }
         if tail.0 > head.0 + 1 {
-            tail.1 -= 1;
+            tail.0 -= 1;
         }
         return;
     }
@@ -48,6 +48,7 @@ fn move_tail(head: &Cell, tail: &mut Cell) {
         if tail.1 > head.1 {
             tail.1 -= 1;
         }
+        return;
     }
     if tail.0 > head.0 + 1{
         tail.0 -= 1;
@@ -65,7 +66,7 @@ fn move_tail(head: &Cell, tail: &mut Cell) {
             tail.0 += 1;
         }
         if tail.0 > head.0 {
-            tail.1 -= 1;
+            tail.0 -= 1;
         }
         return;
     }
@@ -75,7 +76,7 @@ fn move_tail(head: &Cell, tail: &mut Cell) {
             tail.0 += 1;
         }
         if tail.0 > head.0 {
-            tail.1 -= 1;
+            tail.0 -= 1;
         }
         return;
     }
@@ -87,20 +88,24 @@ enum Direction{
     Up,
     Right,
     Down,
-    None
 }
 
-fn move_head(head: &mut Cell, tail: &mut Cell, visited: &mut HashSet<Cell>, string: String) {
+fn move_head(head: &mut Cell, tail: &mut Cell, visited: &mut HashSet<Cell>, string: String) -> u32 {
+    println!("{}", string);
     let vector = Direction::get_direction(string.get(0..1).unwrap().chars().next().unwrap()).get_vector();
     let steps = string[2..].parse::<u8>().unwrap();
+    let mut sum = 0;
     for _ in 0..steps {
-        head.0 = (head.0 as isize + vector.0) as usize;
-        head.1 = (head.1 as isize + vector.1) as usize;
+        head.0 = head.0 as isize + vector.0;
+        head.1 = head.1 as isize + vector.1;
+        println!("Head: {:?} Tail: {:?}", head, tail);
         move_tail(head, tail);
         if !visited.contains(tail) {
             visited.insert(*tail);
+            sum += 1;
         }
     }
+    sum
 }
 
 impl Direction {
@@ -119,7 +124,6 @@ impl Direction {
             Direction::Up => (0, 1),
             Direction::Right => (1, 0),
             Direction::Down => (0, -1),
-            Direction::None => (0, 0)
         }
     }
 }
