@@ -25,7 +25,7 @@ let file = File::open("./resources/day07/input.txt")?;
             }
         }
     }
-    println!("{:?}", sizes);
+    println!("{:#?}", sizes);
     let used_space = sizes.get("/").unwrap();
     let needed_space = used_space - (FILESYSTEM_SIZE - REQUIRED_SPACE);
     let mut min = FILESYSTEM_SIZE;
