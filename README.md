@@ -4,4 +4,4 @@ This is my code for the [Advent of Code](https://adventofcode.com/) puzzles that
 
 # List
 * [2022](AoC2022) - Done in Rust (9/25)
-* [2023](AoC2022) - Done in Rust (1/25)
+* [2023](AoC2023) - Done in Rust (1/25)
